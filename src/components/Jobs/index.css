@@ -19,7 +19,7 @@
   margin-top: 24px;
 }
 
-.input-field {
+.search-input-field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -31,7 +31,8 @@
   border-radius: 5px;
 }
 
-.input {
+.jobs-search-input {
+  background-color: transparent;
   border: none;
   outline: none;
   font-size: 13px;

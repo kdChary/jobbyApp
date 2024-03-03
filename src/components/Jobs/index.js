@@ -155,9 +155,9 @@ class Jobs extends Component {
     const {searchInput} = this.state
 
     return (
-      <div className="input-field">
+      <div className="search-input-field">
         <input
-          className="input"
+          className="jobs-search-input"
           type="search"
           onChange={this.onChangeSearch}
           value={searchInput}

@@ -9,10 +9,10 @@ import './index.css'
 
 const Header = props => {
   const onClickLogOut = () => {
+    Cookies.remove('jwt_token')
+
     const {history} = props
     history.replace('/login')
-
-    Cookies.remove('jwt_token')
   }
   return (
     <nav className="header-container">
@@ -29,7 +29,7 @@ const Header = props => {
         </li>
 
         <li className="nav-item">
-          <Link to="/" className="link-item">
+          <Link to="/jobs" className="link-item">
             <BsBriefcaseFill className="nav-icon" />
           </Link>
         </li>
@@ -47,7 +47,7 @@ const Header = props => {
             <p className="nav-option-text">Home</p>
           </Link>
 
-          <Link to="/" className="link-item">
+          <Link to="/jobs" className="link-item">
             <p className="nav-option-text">Jobs</p>
           </Link>
         </div>
