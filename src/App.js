@@ -2,7 +2,7 @@ import {Switch, Route} from 'react-router-dom'
 
 import './App.css'
 import Login from './components/Login'
-import NotFound from './NotFound'
+import NotFound from './components/NotFound'
 
 // These are the lists used in the application. You can move them to any component needed.
 /*
