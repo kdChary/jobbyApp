@@ -1,6 +1,10 @@
+import {Switch, Route} from 'react-router-dom'
+
 import './App.css'
+import Login from './components/Login'
 
 // These are the lists used in the application. You can move them to any component needed.
+/*
 const employmentTypesList = [
   {
     label: 'Full Time',
@@ -37,9 +41,13 @@ const salaryRangesList = [
     salaryRangeId: '4000000',
     label: '40 LPA and above',
   },
-]
+] */
 
 // Replace your code here
-const App = () => <div>Hello World</div>
+const App = () => (
+  <Switch>
+    <Route exact path="/login" component={Login} />
+  </Switch>
+)
 
 export default App
