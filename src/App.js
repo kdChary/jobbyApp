@@ -2,6 +2,7 @@ import {Switch, Route} from 'react-router-dom'
 
 import './App.css'
 import Login from './components/Login'
+import NotFound from './NotFound'
 
 // These are the lists used in the application. You can move them to any component needed.
 /*
@@ -47,6 +48,7 @@ const salaryRangesList = [
 const App = () => (
   <Switch>
     <Route exact path="/login" component={Login} />
+    <Route exact path="/not-found" component={NotFound} />
   </Switch>
 )
 
