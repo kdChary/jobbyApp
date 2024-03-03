@@ -27,17 +27,20 @@ const Header = props => {
             <TiHome className="nav-icon" />
           </Link>
         </li>
+
         <li className="nav-item">
           <Link to="/" className="link-item">
             <BsBriefcaseFill className="nav-icon" />
           </Link>
         </li>
+
         <li className="nav-item">
           <Link to="/login" className="link-item">
             <FiLogOut className="nav-icon" onClick={onClickLogOut} />
           </Link>
         </li>
       </ul>
+
       <div className="large-devices-option-list">
         <div className="large-nav-options">
           <Link to="/" className="link-item">
