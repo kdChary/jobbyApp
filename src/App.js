@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 import './App.css'
 import Login from './components/Login'
 import NotFound from './components/NotFound'
+import Header from './components/Header'
 
 // These are the lists used in the application. You can move them to any component needed.
 /*
@@ -49,6 +50,7 @@ const App = () => (
   <Switch>
     <Route exact path="/login" component={Login} />
     <Route exact path="/not-found" component={NotFound} />
+    <Route exact path="/header" component={Header} />
   </Switch>
 )
 
