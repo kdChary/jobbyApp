@@ -173,12 +173,11 @@ class Jobs extends Component {
   render() {
     return (
       <>
-        <Header />
         <div className="jobs-container">
-          <div className="left-section">
-            <h3>profile-filter</h3>
+          <Header />
+          <div className="jobs-section">
+            <div className="right-section">{this.renderInput()}</div>
           </div>
-          <div className="right-section">{this.renderInput()}</div>
         </div>
       </>
     )
