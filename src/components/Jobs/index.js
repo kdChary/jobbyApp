@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import {Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
+
 import Cookies from 'js-cookie'
 import {Loader} from 'react-loader-spinner'
+import {BsSearch} from 'react-icons/bs'
 
 import './index.css'
 import Header from '../Header'
@@ -14,7 +17,8 @@ const apiStatusConstant = {
 }
 class Jobs extends Component {
   state = {
-    userDetails: {},
+    searchInput: '',
+    userDetails: [],
     jobsData: [],
     jobsFetchStatus: apiStatusConstant.initial,
     profileFetchStatus: apiStatusConstant.initial,
@@ -24,6 +28,10 @@ class Jobs extends Component {
   componentDidMount() {
     this.getAvailableJobs()
     this.getUserProfile()
+  }
+
+  onChangeSearch = event => {
+    this.setState({searchInput: event.target.value})
   }
 
   modifyJobData = data => ({
@@ -100,11 +108,78 @@ class Jobs extends Component {
     }
   }
 
+  renderLoader = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+    </div>
+  )
+
+  renderFailureView = () => (
+    <div className="failure-card">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="jobs-failure-img"
+      />
+      <h2 className="failure-view-title">Oops! Something Went Wrong</h2>
+      <p className="failure-view-description">
+        We cannot seem to find the page you are lookgin for
+      </p>
+      <button className="retry-btn" type="button" onClick={this.onRetryClicked}>
+        Retry
+      </button>
+    </div>
+  )
+
+  renderNoJobsFound = () => {
+    const {jobsData} = this.state
+    if (!jobsData.length) {
+      return (
+        <div className="no-jobs-card">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+            alt="no jobs"
+            className="no-jobs-img"
+          />
+          <h3 className="no-jobs-title">No Jobs Found</h3>
+          <p className="failure-view-description">
+            We could not find any jobs. Try other filters.
+          </p>
+        </div>
+      )
+    }
+    return null
+  }
+
+  renderInput = () => {
+    const {searchInput} = this.state
+
+    return (
+      <div className="input-field">
+        <input
+          className="input"
+          type="search"
+          onChange={this.onChangeSearch}
+          value={searchInput}
+          placeholder="Search"
+        />
+        <button type="button" data-testid="searchButton" className="search-btn">
+          <BsSearch className="search-icon" />
+        </button>
+      </div>
+    )
+  }
+
   render() {
     return (
       <>
         <Header />
-        <h1>Testing</h1>
+        <div className="jobs-container">
+          <div className="left-section">
+            <h3>profile-filter</h3>
+          </div>
+          <div className="right-section">{this.renderInput()}</div>
+        </div>
       </>
     )
   }
