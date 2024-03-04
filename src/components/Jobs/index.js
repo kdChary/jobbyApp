@@ -222,6 +222,11 @@ class Jobs extends Component {
     }
   }
 
+  renderAllJobsSection = () => {
+    const {jobsData} = this.state
+    console.log(jobsData)
+  }
+
   render() {
     return (
       <>
