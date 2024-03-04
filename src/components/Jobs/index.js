@@ -8,6 +8,7 @@ import {BsSearch} from 'react-icons/bs'
 
 import './index.css'
 import Header from '../Header'
+import FilterGroup from '../FilterGroup'
 
 const apiStatusConstant = {
   initial: 'INITIAL',
@@ -215,6 +216,7 @@ class Jobs extends Component {
             {this.renderInput()}
             {this.renderShowProfile()}
             <hr className="line" />
+            <FilterGroup />
           </div>
         </div>
       </>
