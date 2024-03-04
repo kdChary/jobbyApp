@@ -3,7 +3,7 @@ import {Component} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
-import {Loader} from 'react-loader-spinner'
+import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
 
 import './index.css'
@@ -108,6 +108,10 @@ class Jobs extends Component {
     }
   }
 
+  onClickRetry = () => {
+    window.location.reload()
+  }
+
   renderLoader = () => (
     <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
@@ -123,33 +127,27 @@ class Jobs extends Component {
       />
       <h2 className="failure-view-title">Oops! Something Went Wrong</h2>
       <p className="failure-view-description">
-        We cannot seem to find the page you are lookgin for
+        We cannot seem to find the page you are looking for
       </p>
-      <button className="retry-btn" type="button" onClick={this.onRetryClicked}>
+      <button className="retry-btn" type="button" onClick={this.onClickRetry}>
         Retry
       </button>
     </div>
   )
 
-  renderNoJobsFound = () => {
-    const {jobsData} = this.state
-    if (!jobsData.length) {
-      return (
-        <div className="no-jobs-card">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
-            alt="no jobs"
-            className="no-jobs-img"
-          />
-          <h3 className="no-jobs-title">No Jobs Found</h3>
-          <p className="failure-view-description">
-            We could not find any jobs. Try other filters.
-          </p>
-        </div>
-      )
-    }
-    return null
-  }
+  renderNoJobsFound = () => (
+    <div className="no-jobs-card">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+        alt="no jobs"
+        className="no-jobs-img"
+      />
+      <h1 className="no-jobs-title">No Jobs Found</h1>
+      <p className="failure-view-description">
+        We could not find any jobs. Try other filters.
+      </p>
+    </div>
+  )
 
   renderInput = () => {
     const {searchInput} = this.state
@@ -170,13 +168,53 @@ class Jobs extends Component {
     )
   }
 
+  renderProfileCard = () => {
+    const {userDetails} = this.state
+    const {name, profileImageUrl, shortBio} = userDetails
+
+    return (
+      <div className="user-profile">
+        <img src={profileImageUrl} alt="profile" className="profile-pic" />
+        <h2 className="user-profile-name">{name}</h2>
+        <p className="user-bio">{shortBio}</p>
+      </div>
+    )
+  }
+
+  renderShowProfile = () => {
+    const {profileFetchStatus} = this.state
+
+    switch (profileFetchStatus) {
+      case apiStatusConstant.inProgress:
+        return this.renderLoader()
+      case apiStatusConstant.success:
+        return this.renderProfileCard()
+      case apiStatusConstant.failure:
+        return (
+          <div className="retry-card">
+            <button
+              className="retry-btn"
+              type="button"
+              onClick={this.onClickRetry}
+            >
+              Retry
+            </button>
+          </div>
+        )
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <>
         <div className="jobs-container">
           <Header />
           <div className="jobs-section">
-            <div className="right-section">{this.renderInput()}</div>
+            {this.renderInput()}
+            {this.renderShowProfile()}
+            <hr className="line" />
           </div>
         </div>
       </>
@@ -185,3 +223,5 @@ class Jobs extends Component {
 }
 
 export default Jobs
+
+/* <div className="right-section"> */
