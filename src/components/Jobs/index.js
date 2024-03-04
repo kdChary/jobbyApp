@@ -9,6 +9,7 @@ import {BsSearch} from 'react-icons/bs'
 import './index.css'
 import Header from '../Header'
 import FilterGroup from '../FilterGroup'
+import JobItem from '../JobItem'
 
 const apiStatusConstant = {
   initial: 'INITIAL',
@@ -224,7 +225,16 @@ class Jobs extends Component {
 
   renderAllJobsSection = () => {
     const {jobsData} = this.state
-    console.log(jobsData)
+
+    return (
+      <div className="all-jobs-container">
+        <ul className="all-jobs-list">
+          {jobsData.map(eachJob => (
+            <JobItem key={eachJob.id} jobDetails={eachJob} />
+          ))}
+        </ul>
+      </div>
+    )
   }
 
   render() {
@@ -237,6 +247,7 @@ class Jobs extends Component {
             {this.renderShowProfile()}
             <hr className="line" />
             <FilterGroup toggleCategory={this.changeCategoryValue} />
+            {this.renderAllJobsSection()}
           </div>
         </div>
       </>
