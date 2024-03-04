@@ -76,7 +76,6 @@ class Jobs extends Component {
       this.onProfileFetchSuccess(modifiedProfile)
 
       this.setState({profileFetchStatus: apiStatusConstant.success})
-      console.log(modifiedProfile)
     } else {
       this.setState({profileFetchStatus: apiStatusConstant.failure})
     }
@@ -104,6 +103,7 @@ class Jobs extends Component {
       const modifiedData = data.jobs.map(eachJob => this.modifyJobData(eachJob))
       this.onJobsFetchSuccess(modifiedData)
       this.setState({jobsFetchStatus: apiStatusConstant.success})
+      console.log(modifiedData)
     } else {
       this.setState({jobsFetchStatus: apiStatusConstant.failure})
     }
@@ -111,6 +111,21 @@ class Jobs extends Component {
 
   onClickRetry = () => {
     window.location.reload()
+  }
+
+  changeCategoryValue = value => {
+    const {query} = this.state
+
+    if (!query.includes(value)) {
+      this.setState(
+        prevState => ({query: [...prevState.query, value]}),
+        this.getAvailableJobs,
+      )
+    } else {
+      const index = query.indexOf(value)
+      query.splice(index, 1)
+      this.setState({query}, this.getAvailableJobs)
+    }
   }
 
   renderLoader = () => (
@@ -216,7 +231,7 @@ class Jobs extends Component {
             {this.renderInput()}
             {this.renderShowProfile()}
             <hr className="line" />
-            <FilterGroup />
+            <FilterGroup toggleCategory={this.changeCategoryValue} />
           </div>
         </div>
       </>

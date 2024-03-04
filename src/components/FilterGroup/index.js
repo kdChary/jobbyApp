@@ -39,44 +39,51 @@ const salaryRangesList = [
 ]
 
 const FilterGroup = props => {
-  const {sample = 'sample'} = props
-  console.log(sample)
+  const {toggleCategory} = props
 
   const changeVal = () => {
-    console.log('boxChecked')
+    toggleCategory()
   }
 
   return (
     <div className="filters-group-container">
-      <div className="filters-employment-type">
-        <h3 className="filters-group-title">Type of Employment</h3>
+      <h5 className="filters-group-title">Type of Employment</h5>
 
-        <ul className="filters-group-list">
-          {employmentTypesList.map(eachType => (
-            <li className="filter-group-item" key={eachType.employmentTypeId}>
-              <input type="checkbox" id="checkBox" onChange={changeVal} />
+      <ul className="filters-group-list">
+        {employmentTypesList.map(eachType => (
+          <li className="filter-group-item" key={eachType.employmentTypeId}>
+            <input
+              type="checkbox"
+              id={eachType.employmentTypeId}
+              onChange={changeVal}
+            />
 
-              <label className="label" htmlFor="checkBox">
-                {eachType.label}
-              </label>
-            </li>
-          ))}
-        </ul>
+            <label className="label" htmlFor={eachType.employmentTypeId}>
+              {eachType.label}
+            </label>
+          </li>
+        ))}
+      </ul>
 
-        <hr className="line" />
+      <hr className="line" />
 
-        <ul className="filters-group-list">
-          {salaryRangesList.map(salaryRange => (
-            <li className="filter-group-item" key={salaryRange.salaryRangeId}>
-              <input type="radio" id="checkBox" onChange={changeVal} />
+      <h5 className="filters-group-title">Salary Range</h5>
 
-              <label className="label" htmlFor="checkBox">
-                {salaryRange.label}
-              </label>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="filters-group-list">
+        {salaryRangesList.map(salaryRange => (
+          <li className="filter-group-item" key={salaryRange.salaryRangeId}>
+            <input
+              type="radio"
+              id={salaryRange.salaryRangeId}
+              onChange={changeVal}
+            />
+
+            <label className="label" htmlFor={salaryRange.salaryRangeId}>
+              {salaryRange.label}
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
