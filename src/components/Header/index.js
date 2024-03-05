@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 import {TiHome} from 'react-icons/ti'
@@ -61,4 +61,4 @@ const Header = props => {
     </nav>
   )
 }
-export default Header
+export default withRouter(Header)
