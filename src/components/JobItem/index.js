@@ -4,6 +4,7 @@ import {BsBriefcaseFill} from 'react-icons/bs'
 
 import './index.css'
 
+// TODO: add Link to /jobItemDetails
 const JobItem = props => {
   const {jobDetails} = props
   const {

@@ -152,6 +152,24 @@
 
 /* horizontal line styling */
 .line {
-  width: 90%;
+  width: 93%;
   border: solid 1.2px #7e858e;
+}
+
+/* Styling for all jobs list */
+.all-jobs-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #ffffff;
+}
+.all-jobs-list {
+  padding-left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

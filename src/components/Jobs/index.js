@@ -227,13 +227,13 @@ class Jobs extends Component {
     const {jobsData} = this.state
 
     return (
-      <div className="all-jobs-container">
+      <>
         <ul className="all-jobs-list">
           {jobsData.map(eachJob => (
             <JobItem key={eachJob.id} jobDetails={eachJob} />
           ))}
         </ul>
-      </div>
+      </>
     )
   }
 
@@ -257,4 +257,4 @@ class Jobs extends Component {
 
 export default Jobs
 
-/* <div className="right-section"> */
+/* <div className="right-section"> div className="all-jobs-container" */
