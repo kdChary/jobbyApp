@@ -26,7 +26,7 @@ class Jobs extends Component {
     profileFetchStatus: apiStatusConstant.initial,
     query: [],
   }
-  // TODO: add filter functionality and render properly.
+  // TODO: add filter functionality and search query.
 
   componentDidMount() {
     this.getAvailableJobs()
@@ -246,7 +246,7 @@ class Jobs extends Component {
 
     switch (jobsFetchStatus) {
       case apiStatusConstant.inProgress:
-        return this.renderLoader()
+        return <div className="align-loader">{this.renderLoader()}</div>
 
       case apiStatusConstant.success:
         return this.renderAllJobsSection()
