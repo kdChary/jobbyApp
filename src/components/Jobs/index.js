@@ -26,6 +26,7 @@ class Jobs extends Component {
     profileFetchStatus: apiStatusConstant.initial,
     query: [],
   }
+  // TODO: add filter functionality and render properly.
 
   componentDidMount() {
     this.getAvailableJobs()
@@ -240,17 +241,51 @@ class Jobs extends Component {
     )
   }
 
+  showAllJobsSection = () => {
+    const {jobsFetchStatus} = this.state
+
+    switch (jobsFetchStatus) {
+      case apiStatusConstant.inProgress:
+        return this.renderLoader()
+
+      case apiStatusConstant.success:
+        return this.renderAllJobsSection()
+
+      case apiStatusConstant.failure:
+        return this.renderFailureView()
+
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <>
-        <div className="jobs-container">
+        <div className="responsive-container">
           <Header />
+
           <div className="jobs-section">
-            {this.renderInput()}
-            {this.renderShowProfile()}
-            <hr className="line" />
-            <FilterGroup toggleCategory={this.changeCategoryValue} />
-            {this.renderAllJobsSection()}
+            <div className="profile-filter-section-small">
+              {this.renderInput()}
+
+              {this.renderShowProfile()}
+
+              <hr className="line" />
+
+              <FilterGroup toggleCategory={this.changeCategoryValue} />
+            </div>
+
+            <div className="profile-filter-section-large">
+              {this.renderShowProfile()}
+
+              <hr className="line" />
+              <FilterGroup toggleCategory={this.changeCategoryValue} />
+            </div>
+            <div className="all-jobs-card-large">
+              {this.renderInput()}
+              {this.showAllJobsSection()}
+            </div>
           </div>
         </div>
       </>

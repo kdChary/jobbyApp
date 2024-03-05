@@ -1,4 +1,4 @@
-.jobs-container {
+.responsive-container {
   background-color: #000000;
   min-height: 100vh;
   font-family: 'Roboto';
@@ -7,31 +7,37 @@
 .jobs-section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-height: 90vh;
   padding-top: 33px;
 }
+@media (min-width: 767px) {
+  .jobs-section {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+}
 
-/* .right-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: stretch;
-  padding: 0;
-  margin-top: 24px;
-} */
 /* Styling Search-Input */
 .search-input-field {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto 0 auto;
   width: 90%;
   height: 33px;
   padding: 0;
   border: solid 1px #cbd5e1;
   border-radius: 5px;
+}
+@media (min-width: 767px) {
+  .search-input-field {
+    width: 70%;
+    margin: 0 auto 0 33px;
+  }
 }
 
 .jobs-search-input {
@@ -133,7 +139,7 @@
   background-size: cover;
   border: none;
   border-radius: 13px;
-  margin-top: 23px;
+  margin: 23px auto 0 auto;
   width: 90%;
   padding: 15px;
 }
@@ -157,19 +163,36 @@
 }
 
 /* Styling for all jobs list */
-.all-jobs-container {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px #ffffff;
-}
 .all-jobs-list {
   padding-left: 0;
-  width: 100%;
+  /* width: 60%; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+/* adding Responsiveness to filter group */
+.profile-filter-section-small {
+  width: 90%;
+}
+@media (min-width: 768px) {
+  .profile-filter-section-small {
+    display: none;
+  }
+}
+
+.profile-filter-section-large {
+  display: none;
+}
+@media (min-width: 767px) {
+  .profile-filter-section-large {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+  }
+}
+
+.all-jobs-card-large {
+  width: 60%;
 }
