@@ -274,6 +274,7 @@ class Jobs extends Component {
               <hr className="line" />
 
               <FilterGroup toggleCategory={this.changeCategoryValue} />
+              {this.showAllJobsSection()}
             </div>
 
             <div className="profile-filter-section-large">

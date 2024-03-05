@@ -173,7 +173,7 @@
 /* Styling for all jobs list */
 .all-jobs-list {
   padding-left: 0;
-  /* width: 60%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -202,6 +202,7 @@
 }
 
 .all-jobs-card-large {
+  display: none;
   width: 60%;
 }
 
@@ -215,5 +216,8 @@
 @media (min-width: 768px) {
   .align-loader {
     align-items: flex-end;
+  }
+  .all-jobs-card-large {
+    display: block;
   }
 }
