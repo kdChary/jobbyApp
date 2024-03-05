@@ -43,25 +43,25 @@
   }
 }
 
-.input-field {
+.login-input-field {
   display: flex;
   flex-direction: column;
   align-self: stretch;
 }
 
-.label {
+.login-label {
   font-size: 9px;
   /* font-weight: 500; */
   color: #cbd5e1;
   margin-bottom: 7px;
 }
 @media (min-width: 768px) {
-  .label {
+  .login-label {
     font-size: 11px;
   }
 }
 
-.input {
+.login-input {
   background-color: transparent;
   border: solid 1.5px #7e858e;
   border-radius: 5px;
@@ -72,7 +72,7 @@
   outline: none;
 }
 @media (min-width: 768px) {
-  .input {
+  .login-input {
     height: 31px;
   }
 }

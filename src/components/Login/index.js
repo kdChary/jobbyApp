@@ -61,14 +61,14 @@ class Login extends Component {
     const {username} = this.state
     return (
       <>
-        <label htmlFor="username" className="label">
+        <label htmlFor="username" className="login-label">
           USERNAME
         </label>
         <input
           type="text"
           id="username"
           value={username}
-          className="input"
+          className="login-input"
           onChange={this.onChangeUsername}
           placeholder="Username"
         />
@@ -80,14 +80,14 @@ class Login extends Component {
     const {password} = this.state
     return (
       <>
-        <label htmlFor="password" className="label">
+        <label htmlFor="password" className="login-label">
           PASSWORD
         </label>
         <input
           type="password"
           id="password"
           value={password}
-          className="input"
+          className="login-input"
           onChange={this.onChangePassword}
           placeholder="Password"
         />
@@ -101,9 +101,9 @@ class Login extends Component {
     return (
       <>
         <form name="loginForm" className="login-form" onSubmit={this.onSubmit}>
-          <div className="input-field">{this.renderUserNameField()}</div>
+          <div className="login-input-field">{this.renderUserNameField()}</div>
 
-          <div className="input-field">{this.renderPasswordField()}</div>
+          <div className="login-input-field">{this.renderPasswordField()}</div>
 
           <button className="submit-btn" type="submit">
             Login
