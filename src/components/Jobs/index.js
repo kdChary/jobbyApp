@@ -104,7 +104,6 @@ class Jobs extends Component {
       const modifiedData = data.jobs.map(eachJob => this.modifyJobData(eachJob))
       this.onJobsFetchSuccess(modifiedData)
       this.setState({jobsFetchStatus: apiStatusConstant.success})
-      console.log(modifiedData)
     } else {
       this.setState({jobsFetchStatus: apiStatusConstant.failure})
     }
