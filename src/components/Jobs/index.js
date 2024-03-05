@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import {Component} from 'react'
-import {Link, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
@@ -225,6 +225,10 @@ class Jobs extends Component {
 
   renderAllJobsSection = () => {
     const {jobsData} = this.state
+    const token = Cookies.get('jwt_token')
+    if (token === undefined) {
+      return <Redirect to="/login" />
+    }
 
     return (
       <>
